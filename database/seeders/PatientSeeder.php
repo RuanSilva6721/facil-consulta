@@ -13,7 +13,7 @@ class PatientSeeder extends Seeder
      */
     public function run(): void
     {
-        $numberOfPatients = 10;
+        $numberOfPatients = 1000;
 
         Patient::factory($numberOfPatients)->create();
     }

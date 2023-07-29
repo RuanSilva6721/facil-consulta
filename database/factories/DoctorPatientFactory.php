@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DoctorPatient>
@@ -16,13 +17,12 @@ class DoctorPatientFactory extends Factory
      */
     public function definition(): array
     {
+        $doctorsIds = \App\Models\Doctor::pluck('id')->toArray();
+        $patientIds = \App\Models\Patient::pluck('id')->toArray();
+
         return [
-            'doctor_id' => function () {
-                return \App\Models\Doctor::factory()->create()->id;
-            },
-            'patient_id' => function () {
-                return \App\Models\Patient::factory()->create()->id;
-            },
+            'doctor_id' => Arr::random($doctorsIds),
+            'patient_id' => Arr::random($patientIds),
         ];
     }
 }
