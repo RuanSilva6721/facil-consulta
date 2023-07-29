@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 
@@ -29,9 +26,10 @@ Route::get('/cidades', [CityController::class, 'getCities'])->name('getCities');
 Route::get('/medicos', [DoctorController::class, 'getDoctors'])->name('getDoctors');
 Route::get('/cidades/{id}/medicos', [DoctorController::class, 'getDoctorsOfCity'])->name('getDoctorsOfCity');
 
-Route::post('/medicos/{id}/pacientes', [DoctorPatientController::class, 'linkPatientToDoctor'])->name('linkPatientToDoctor');
-Route::get('/medicos/{id}/pacientes', [DoctorPatientController::class, 'getPatientOfDoctor'])->name('getPatientOfDoctor');
-Route::post('/pacientes/{id}', [PatientController::class, 'updatePatient'])->name('updatePatient');
-Route::post('/pacientes', [PatientController::class, 'createPatient'])->name('createPatient');
+
+Route::middleware('auth:sanctum')->post('/medicos/{id}/pacientes', [DoctorPatientController::class, 'linkPatientToDoctor'])->name('linkPatientToDoctor');
+Route::middleware('auth:sanctum')->get('/medicos/{id}/pacientes', [DoctorPatientController::class, 'getPatientOfDoctor'])->name('getPatientOfDoctor');
+Route::middleware('auth:sanctum')->post('/pacientes/{id}', [PatientController::class, 'updatePatient'])->name('updatePatient');
+Route::middleware('auth:sanctum')->post('/pacientes', [PatientController::class, 'createPatient'])->name('createPatient');
 
 
