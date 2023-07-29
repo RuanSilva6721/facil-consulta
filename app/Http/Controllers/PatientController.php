@@ -24,4 +24,12 @@ class PatientController extends Controller
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
         }
     }
+    public function createPatient(Request $request)
+    {
+        try {
+            return $this->patientService->createPatient($request);
+        } catch (\Exception $e) {
+            echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+        }
+    }
 }

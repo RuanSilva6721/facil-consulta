@@ -32,5 +32,6 @@ Route::get('/cidades/{id}/medicos', [DoctorController::class, 'getDoctorsOfCity'
 Route::post('/medicos/{id}/pacientes', [DoctorPatientController::class, 'linkPatientToDoctor'])->name('linkPatientToDoctor');
 Route::get('/medicos/{id}/pacientes', [DoctorPatientController::class, 'getPatientOfDoctor'])->name('getPatientOfDoctor');
 Route::post('/pacientes/{id}', [PatientController::class, 'updatePatient'])->name('updatePatient');
+Route::post('/pacientes', [PatientController::class, 'createPatient'])->name('createPatient');
 
 

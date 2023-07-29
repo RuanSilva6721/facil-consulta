@@ -16,5 +16,10 @@ class PatientService
         $data = $request->all();
         return $this->patientRepository->updatePatient($id, $data);
     }
+    public function createPatient($request)
+    {
+        $data = $request->all();
+        return $this->patientRepository->createPatient($data);
+    }
 
 }
