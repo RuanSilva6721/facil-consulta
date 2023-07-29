@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\CitySeeder;
+use Database\Seeders\DoctorPatientSeeder;
+use Database\Seeders\DoctorSeeder;
+use Database\Seeders\PatientSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,16 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        $this->call(CitiesTableSeeder::class);
-        $this->call(DoctorsTableSeeder::class);
-        $this->call(PatientsTableSeeder::class);
-        $this->call(DoctorPatientsTableSeeder::class);
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(CitySeeder::class);
+        $this->call(DoctorSeeder::class);
+        $this->call(PatientSeeder::class);
+        $this->call(DoctorPatientSeeder::class);
+
+        \App\Models\User::factory(1)->create();
+
     }
 }
