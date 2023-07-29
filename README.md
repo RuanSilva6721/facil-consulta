@@ -49,7 +49,7 @@ Caso queira adicionar dados fictícios para o seu usuário no banco:
 
 ```bash
 
-php artisan db:seed
+./vendor/bin/sail artisan db:seed
 ```
 
 ## Construído com 
