@@ -29,13 +29,12 @@ class DoctorFactory extends Factory
             'Psiquiatria',
             'Urologia'
         ];
+        $cityIds = \App\Models\City::pluck('id')->toArray();
 
         return [
             'name' => $this->faker->name,
             'specialty' => Arr::random($especialidades),
-            'city_id' => function () {
-                return \App\Models\City::factory()->create()->id;
-            },
+            'city_id' =>  Arr::random($cityIds),
         ];
     }
 }
