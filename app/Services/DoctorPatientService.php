@@ -18,5 +18,9 @@ class DoctorPatientService
 
         return $this->doctorPatientRepository->linkPatientToDoctor($id, $patientId);
     }
+    public function getPatientOfDoctor($id)
+    {
+        return $this->doctorPatientRepository->getPatientOfDoctor($id);
+    }
 
 }

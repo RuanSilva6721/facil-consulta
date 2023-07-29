@@ -17,5 +17,17 @@ class DoctorPatientRepositoryEloquent implements DoctorPatientRepository
 
         return $doctorPatient;
     }
+    public function getPatientOfDoctor($id){
+
+     $doctor = Doctor::find($id);
+     if (!$doctor) {
+         return response()->json(['message' => 'Médico não encontrado'], 404);
+     }
+
+     $patientIds = $doctor->patients()->pluck('patient_id')->toArray();
+     $patients = \App\Models\Patient::whereIn('id', $patientIds)->get();
+
+     return response()->json($patients);
+    }
     
 }

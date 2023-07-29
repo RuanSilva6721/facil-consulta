@@ -25,4 +25,12 @@ class DoctorPatientController extends Controller
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
         }
     }
+    public function getPatientOfDoctor($id)
+    {
+        try {
+            return $this->doctorPatientService->getPatientOfDoctor($id);
+        } catch (\Exception $e) {
+            echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+        }
+    }
 }

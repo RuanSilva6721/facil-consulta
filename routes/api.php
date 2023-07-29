@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorPatientController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,7 @@ Route::get('/medicos', [DoctorController::class, 'getDoctors'])->name('getDoctor
 Route::get('/cidades/{id}/medicos', [DoctorController::class, 'getDoctorsOfCity'])->name('getDoctorsOfCity');
 
 Route::post('/medicos/{id}/pacientes', [DoctorPatientController::class, 'linkPatientToDoctor'])->name('linkPatientToDoctor');
+Route::get('/medicos/{id}/pacientes', [DoctorPatientController::class, 'getPatientOfDoctor'])->name('getPatientOfDoctor');
+Route::post('/pacientes/{id}', [PatientController::class, 'updatePatient'])->name('updatePatient');
+
+
