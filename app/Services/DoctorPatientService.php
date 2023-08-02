@@ -13,6 +13,16 @@ class DoctorPatientService
     }
     public function linkPatientToDoctor($id, $request)
     {
+        $validator = Validator::make($request->all(), [
+            'paciente_id' => 'required|numeric'
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation error',
+                'errors' => $validator->errors()
+            ], 400);
+        }
         $data = $request->all();
         $patientId = $data['paciente_id'];
 
